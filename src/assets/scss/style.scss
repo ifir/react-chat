@@ -1,0 +1,10 @@
+body{
+	h1{
+		color:green;
+	}
+}
+div{
+	&:hover{
+		color:red;
+	}
+}
