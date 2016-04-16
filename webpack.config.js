@@ -33,7 +33,6 @@ module.exports = {
 	        filename:"common.js"
 	        //minChunks: Infinity
 	    }),
-	    
 	    //独立出css
 	    new ExtractTextPlugin("style.css", {allChunks: true})
 	]
