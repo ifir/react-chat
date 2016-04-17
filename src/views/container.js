@@ -12,6 +12,7 @@ module.exports = React.createClass({
 			<div>
 				<h1>hello react</h1>
 				<p>你好</p>
+				<h3>呵呵!!</h3>
 				<List />
 			</div>
 		)
