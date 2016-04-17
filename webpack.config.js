@@ -23,7 +23,9 @@ module.exports = {
 			        presets: ['react']
 			   	}
 			},
-			{ test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }
+			{ test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") },
+			{ test: /\.(jpg|png|gif)$/, loader: 'file'}
+			//loader: "file-loader?name=images/[hash].[ext]"
 		]
 	},
 	plugins: [
