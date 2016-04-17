@@ -1,7 +1,3 @@
-//样式
-require("./assets/scss/style.scss");
-
-
 var React = require('react');
 var ReactDOM = require('react-dom'); //render react
 //视图
