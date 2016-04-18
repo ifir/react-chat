@@ -10,6 +10,7 @@ var imagemin = require('gulp-imagemin');//压缩img
 var config = require('./webpack.config.js');
 var reactPath = 'src/**/*.jsx';
 var imgPath = 'src/assets/img/*.*';
+var sassPath = 'src/assets/scss/*.scss';
 //webpack
 gulp.task('webpack', function(){
 	return gulp.src(reactPath)
@@ -28,21 +29,30 @@ gulp.task('supervisor', function() {
     } );
 });
 //sass
-gulp.task('webpack', function(){
-	return gulp.src(reactPath)
+gulp.task('sass', function(){
+	return gulp.src(sassPath)
 	.pipe(plumber())
-	.pipe(changed(reactPath))
-	.pipe(webpack(config))
+	.pipe(changed(sassPath))
+	.pipe(sass({outputStyle:'expanded'}))
 	.pipe(gulp.dest('./dist'))
+})
+//img
+gulp.task('images', function(){
+	return gulp.src(imgPath)
+	.pipe(plumber())
+	.pipe(changed(imgPath))
+	.pipe(gulp.dest('./dist/img'))
 })
 //监视文件变化
 gulp.task('watch',function (){
 	gulp.watch(reactPath,['webpack']);
+	gulp.watch(sassPath,['sass']);
+	gulp.watch(imgPath,['images']);
 });
 //默认gulp task
 gulp.task('default', function(callback){
 	 runSequence(
-	 	['webpack', 'watch'],
+	 	['webpack', 'sass', 'images', 'watch'],
 	 	'supervisor',
 	 	callback
 	 )

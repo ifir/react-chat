@@ -1,0 +1,35 @@
+@import './lib/normalize.scss';
+@import './lib/skin.scss';
+@import './lib/mixin.scss';
+body
+{
+    overflow: hidden;
+
+    background: url(img/bg.jpg) no-repeat 0 0;
+    background-size: cover;
+}
+.clearfix:after
+{
+    display: block;
+    visibility: hidden;
+    clear: both;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+}
+
+
+//chat
+#chat
+{
+    overflow: hidden;
+
+    width: 700px;
+    height: 500px;
+    margin: 30px auto 0;
+
+    border-radius: 3px;
+    background: #eee;
+}
