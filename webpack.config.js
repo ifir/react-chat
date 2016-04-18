@@ -1,11 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+//var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
 	devtool: '#source-map',
 	entry: {
-		main : './src/main.js',
+		main : './src/main.jsx',
 		commons : ['react', 'react-dom']
 	},
 	output: {
@@ -16,15 +16,16 @@ module.exports = {
 	module:{
 		loaders:[
 			{
-				test:/\.js$/,
+				test:/\.jsx$/,
 				exclude: /node_modules/,
 				loader:'babel',
 				query: {
 			        presets: ['react']
 			   	}
-			},
-			{ test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") },
-			{ test: /\.(jpg|png|gif)$/, loader: 'file'}
+			}
+			//{ test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") },
+			//{ test: /\.(jpg|png|gif)$/, loader: 'file'}
+			//{ test: /\.html$/, loader: "html" }
 			//loader: "file-loader?name=images/[hash].[ext]"
 		]
 	},
@@ -32,10 +33,10 @@ module.exports = {
 		//提取公共js
 	    new webpack.optimize.CommonsChunkPlugin({
 	        name: "commons",
-	        filename:"common.js"
+	        filename:"commons.js"
 	        //minChunks: Infinity
 	    }),
 	    //独立出css
-	    new ExtractTextPlugin("style.css", {allChunks: true})
+	    //new ExtractTextPlugin("style.css", {allChunks: true})
 	]
 }

@@ -4,10 +4,11 @@ var supervisor = require( "gulp-supervisor" ); //实时重启服务
 var runSequence = require('run-sequence');//任务先后順序
 var changed = require('gulp-changed');//过滤变动的文件
 var plumber = require('gulp-plumber');//捕获处理任务中的错误
-//var minimg = require('gulp-imagemin');//压缩图片
+var sass = require('gulp-sass');//编译sass
+var imagemin = require('gulp-imagemin');//压缩img
 
 var config = require('./webpack.config.js');
-var reactPath = 'src/**/*.*';
+var reactPath = 'src/**/*.jsx';
 var imgPath = 'src/assets/img/*.*';
 //webpack
 gulp.task('webpack', function(){
@@ -26,10 +27,17 @@ gulp.task('supervisor', function() {
         exec: "node"
     } );
 });
+//sass
+gulp.task('webpack', function(){
+	return gulp.src(reactPath)
+	.pipe(plumber())
+	.pipe(changed(reactPath))
+	.pipe(webpack(config))
+	.pipe(gulp.dest('./dist'))
+})
 //监视文件变化
 gulp.task('watch',function (){
 	gulp.watch(reactPath,['webpack']);
-	gulp.watch([imgPath], ['min:img']);
 });
 //默认gulp task
 gulp.task('default', function(callback){
