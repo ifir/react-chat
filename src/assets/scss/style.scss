@@ -8,6 +8,13 @@ body
     background: url(img/bg.jpg) no-repeat 0 0;
     background-size: cover;
 }
+ul{
+	margin:0;
+	padding:0;
+}
+li{
+	list-style:none;
+}
 .clearfix:after
 {
     display: block;
@@ -32,4 +39,64 @@ body
 
     border-radius: 3px;
     background: #eee;
+    //左侧
+    .sidebar{
+    	width: 200px;
+    	height:500px;
+    	overflow-y: auto;
+    	background:#2e3238;
+    	color: #fff;
+    	.headpic{
+    		width: 176px;
+    		height:40px;
+    		margin:10px auto;
+    		line-height: 40px;
+    		text-align: center;
+    		img{
+    			width: 40px;
+    			height: 40px;
+    			float: left;
+    		}
+    		span{
+    			margin-left: -40px;
+    			font-size: 18px;
+    		}
+    	}
+    	//搜索
+    	.search{
+			width: 176px;
+			height:20px;
+			margin:0 auto 10px;
+			.search-input{
+				border:0;
+				outline: none;
+				border-radius:50px;
+				width: 100%;
+				height: 18px;
+				border:1px solid #615A5A;
+				background:#26292e;
+				color:#fff;
+				font-size: 12px;
+				line-height: 18px;
+				text-indent: 24px;
+			}
+    	}
+    	//列表
+    	.list-box{
+    		height:410px;
+
+    		li{
+    			padding:10px;
+    			cursor: pointer;
+    			img{
+    				width: 30px;
+    				height:30px;
+    			}
+
+	    		&.active{
+	    			background:#43484F;
+	    		}
+    		}
+    	}
+    }
 }
