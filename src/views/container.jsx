@@ -8,6 +8,7 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<Sidebar />
+				<Chatarea />
 			</div>
 		)
 	}

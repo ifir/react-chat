@@ -24,7 +24,7 @@ gulp.task('supervisor', function() {
 	supervisor( "app.js", {
         watch: [ "src" ],
         ignore: [ "node_modules" ],
-        extensions: [ "js scss" ],
+        extensions: [ "jsx scss" ],
         exec: "node"
     } );
 });

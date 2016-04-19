@@ -1,0 +1,14 @@
+@mixin box-sizing
+{
+    -webkit-box-sinzing: border-box;
+       -moz-box-sinzing: border-box;
+        -ms-box-sinzing: border-box;
+         -o-box-sinzing: border-box;
+            box-sinzing: border-box;
+}
+@mixin shadow($value...)
+{
+    -webkit-box-shadow: $value;
+       -moz-box-shadow: $value;
+            box-shadow: $value;
+}
