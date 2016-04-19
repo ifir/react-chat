@@ -19,6 +19,18 @@ module.exports = React.createClass({
 								</div>
 							</div>
 						</li>
+
+						<li>
+							<p className="time">
+								<span>20:00</span>
+							</p>
+							<div className="msg-info me">
+								<img src="dist/img/h1.png" alt="头像" />
+								<div className="msg-text">
+									Hello，
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 				<div className="tools">

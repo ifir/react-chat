@@ -2,8 +2,10 @@
 @import './lib/skin.scss';
 @import './lib/mixin.scss';
 @import './lib/fonts.scss';
-html, body{
-	height:100%;
+html,
+body
+{
+    height: 100%;
 }
 body
 {
@@ -23,26 +25,32 @@ li
 {
     list-style: none;
 }
-.btn{
-	display: inline-block;
-    padding: 4px 12px;
-    margin-bottom: 0;
+.btn
+{
     font-size: 14px;
     font-weight: 400;
     line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
+
+    display: inline-block;
+
+    margin-bottom: 0;
+    padding: 4px 12px;
+
     cursor: pointer;
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+
     border: 1px solid transparent;
     border-radius: 4px;
+    background-image: none;
+
+    -ms-touch-action: manipulation;
+        touch-action: manipulation;
 }
 .clearfix:after
 {
@@ -94,7 +102,8 @@ li
 
                 width: 40px;
                 height: 40px;
-                border-radius:3px;
+
+                border-radius: 3px;
             }
             span
             {
@@ -106,14 +115,18 @@ li
         //搜索
         .search
         {
+            position: relative;
+
             width: 176px;
             height: 20px;
             margin: 0 auto 10px;
-            position:relative;
             .search-input
             {
                 font-size: 12px;
                 line-height: 18px;
+
+                position: relative;
+                z-index: 10;
 
                 width: 100%;
                 height: 18px;
@@ -126,16 +139,17 @@ li
                 border-radius: 50px;
                 outline: none;
                 background: #26292e;
-                position:relative;
-                z-index: 10;
             }
-            i{
-            	position:absolute;
-            	top: 4px;
-            	right:10px;
-            	color: #929292;
-            	z-index: 20;
-            	cursor: pointer;
+            i
+            {
+                position: absolute;
+                z-index: 20;
+                top: 4px;
+                right: 10px;
+
+                cursor: pointer;
+
+                color: #929292;
             }
         }
         //列表
@@ -149,14 +163,16 @@ li
                 cursor: pointer;
 
                 border-bottom: 1px solid #292c33;
+
                 @include box-sizing;
                 img
                 {
                     width: 30px;
                     height: 30px;
-                    border-radius: 3px;
 
                     vertical-align: middle;
+
+                    border-radius: 3px;
                 }
                 span
                 {
@@ -181,92 +197,151 @@ li
 
         width: 500px;
         height: 500px;
-        .show-message{
-        	width: 500px;
-        	height: 350px;
-        	overflow-y: auto;
-        	@include box-sizing;
-        	border-bottom:1px solid #ddd;
-        	.time{
-        		margin: 7px 0;
-    			text-align: center;
-        		 > span{
-        			display: inline-block;
-				    padding: 0 18px;
-				    font-size: 9pt;
-				    color: #fff;
-				    border-radius: 2px;
-				    background-color: #dcdcdc;
-        		}
-        	}
-        	.msg-info{
-	        	img{
-	        		float: left;
-				    margin: 0 15px;
-				    border-radius: 3px;
-				    width: 30px;
-    				height: 30px;
-	        	}
-        		.msg-text{
-        			display: inline-block;
-				    position: relative;
-				    padding: 0 10px;
-				    max-width: 420px;
-				    max-width: calc(100% - 100px);
-				    min-height: 30px;
-				    line-height: 2.5;
-				    font-size: 9pt;
-				    text-align: left;
-				    word-break: break-all;
-				    background-color: #fafafa;
-				    border-radius: 4px;
-				    &:before{
-				    	content: " ";
-					    position: absolute;
-					    top: 9px;
-					    right: 100%;
-					    border: 6px solid transparent;
-					    border-right-color: #fafafa;
-				    }
-        		}
-        	}
+        .show-message
+        {
+            overflow-y: auto;
+
+            width: 500px;
+            height: 350px;
+
+            border-bottom: 1px solid #ddd;
+
+            @include box-sizing;
+            .time
+            {
+                margin: 7px 0;
+
+                text-align: center;
+                > span
+                {
+                    font-size: 9pt;
+
+                    display: inline-block;
+
+                    padding: 0 18px;
+
+                    color: #fff;
+                    border-radius: 2px;
+                    background-color: #dcdcdc;
+                }
+            }
+            .msg-info
+            {
+                img
+                {
+                    float: left;
+
+                    width: 30px;
+                    height: 30px;
+                    margin: 0 15px;
+
+                    border-radius: 3px;
+                }
+                .msg-text
+                {
+                    font-size: 9pt;
+                    line-height: 2.5;
+
+                    position: relative;
+
+                    display: inline-block;
+
+                    max-width: 420px;
+                    max-width: calc(100% - 94px);
+                    min-height: 30px;
+                    padding: 0 10px;
+
+                    text-align: left;
+                    word-break: break-all;
+
+                    border-radius: 4px;
+                    background-color: #fafafa;
+                    &:before
+                    {
+                        position: absolute;
+                        top: 9px;
+                        right: 100%;
+
+                        content: ' ';
+
+                        border: 6px solid transparent;
+                        border-right-color: #fafafa;
+                    }
+                }
+            }
+            .me
+            {
+                text-align: right;
+                img
+                {
+                    float: right;
+                }
+                .msg-text
+                {
+                    background: #b2e281;
+                    &:before
+                    {
+                        right: inherit;
+                        left: 100%;
+
+                        border-right-color: transparent;
+                        border-left-color: #b2e281;
+                    }
+                }
+            }
         }
-        .tools{
-        	width: 100%;
-        	height: 25px;
-        	background:#f5f5f5;
-        	i{
-        		font-size: 16px;
-        		color:#A5A0A0;
-        		line-height: 25px;
-        		padding-left:20px;
-        	}
+        .tools
+        {
+            width: 100%;
+            height: 25px;
+
+            background: #f5f5f5;
+            i
+            {
+                font-size: 16px;
+                line-height: 25px;
+
+                padding-left: 20px;
+
+                cursor: pointer;
+
+                color: #a5a0a0;
+            }
         }
-        .enter-text{
-        	height: 125px;
-        	width: 500px;
-        	position:relative;
-        	.textarea{
-        		border:0;
-        		outline: none;
-        		background:#fff;
-        		width: 100%;
-        		height: 150px;
-        		position:relative;
-        		z-index: 10;
-        		text-indent: 20px;
-        	}
-        	> input{
-				position:absolute;
-				right:10px;
-				bottom:10px;
-				z-index: 20;
-        	}
-        	.btn-enter{
-        		font-size: 12px;
-        		color: #fff;
-        		background:#50D01E;
-        	}
+        .enter-text
+        {
+            position: relative;
+
+            width: 500px;
+            height: 125px;
+            .textarea
+            {
+                position: relative;
+                z-index: 10;
+
+                width: 100%;
+                height: 150px;
+
+                text-indent: 20px;
+
+                border: 0;
+                outline: none;
+                background: #fff;
+            }
+            > input
+            {
+                position: absolute;
+                z-index: 20;
+                right: 10px;
+                bottom: 10px;
+            }
+            .btn-enter
+            {
+                font-size: 12px;
+
+                color: #fff;
+                background: #50d01e;
+            }
         }
     }
 }
