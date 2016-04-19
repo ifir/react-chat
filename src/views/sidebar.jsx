@@ -12,6 +12,7 @@ module.exports = React.createClass({
 				</div>
 				<div className="search">
 					<input className="search-input" type="text" placeholder="search user..."/>
+					<i className="icon icon-search"></i>
 				</div>
 				<List />
 			</div>

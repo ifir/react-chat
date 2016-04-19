@@ -11,6 +11,7 @@ var config = require('./webpack.config.js');
 var reactPath = 'src/**/*.jsx';
 var imgPath = 'src/assets/img/*.*';
 var sassPath = 'src/assets/scss/*.scss';
+var fontPath = 'src/assets/fonts/*.*';
 //webpack
 gulp.task('webpack', function(){
 	return gulp.src(reactPath)
@@ -43,16 +44,23 @@ gulp.task('images', function(){
 	.pipe(changed(imgPath))
 	.pipe(gulp.dest('./dist/img'))
 })
+//fonts
+gulp.task('fonts', function(){
+	return gulp.src(fontPath)
+	.pipe(changed(fontPath))
+	.pipe(gulp.dest('./dist/fonts'))
+})
 //监视文件变化
 gulp.task('watch',function (){
 	gulp.watch(reactPath,['webpack']);
 	gulp.watch(sassPath,['sass']);
 	gulp.watch(imgPath,['images']);
+	gulp.watch(fontPath,['fonts']);
 });
 //默认gulp task
 gulp.task('default', function(callback){
 	 runSequence(
-	 	['webpack', 'sass', 'images', 'watch'],
+	 	['webpack', 'sass', 'images', 'fonts', 'watch'],
 	 	'supervisor',
 	 	callback
 	 )

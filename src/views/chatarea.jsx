@@ -22,12 +22,13 @@ module.exports = React.createClass({
 					</ul>
 				</div>
 				<div className="tools">
-					<span>A</span>
-					<span>P</span>
-					<span>S</span>
+					<i className="icon icon-type"></i>
+					<i className="icon icon-image"></i>
+					<i className="icon icon-cog"></i>
 				</div>
 				<div className="enter-text">
 					<textarea className="textarea" placeholder="按 Ctrl + Enter 发送" maxlength="100"></textarea>
+					<input className="btn btn-enter" type="button" value="发送"/>
 				</div>
 			</div>
 		)
