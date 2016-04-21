@@ -3,6 +3,7 @@ var React = require('react');
 var Sidebar = require('./sidebar.jsx');
 var Chatarea = require('./chatarea.jsx');
 
+
 module.exports = React.createClass({
 	render:function(){
 		return (
