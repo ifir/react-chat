@@ -1,18 +1,24 @@
 var React = require('react');
+var User = require('./user.jsx');
 
 module.exports = React.createClass({
 	render:function(){
+		var listArray = this.props.userList;
+		var lists = listArray.map(function(data){
+			return (
+				<User
+					key={data.key}
+					headimg = {data.headimg}
+					name = {data.name}
+					shownum = {data.shownum}
+					msgnum = {data.msgnum}
+					active = {data.active}
+				/>)
+		})
 		return (
 			<div className="list-box">
 				<ul>
-					<li className="active">
-						<img src="dist/img/h2.png" alt="头像" />
-						<span>React</span>
-					</li>
-					<li>
-						<img src="dist/img/h3.png" alt="头像" />
-						<span>Webpack</span>
-					</li>
+					{lists}
 				</ul>
 			</div>
 		)
