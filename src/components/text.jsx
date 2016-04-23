@@ -3,12 +3,15 @@ var ReactDOM = require('react-dom');
 module.exports = React.createClass({
 	handleSubmit:function(){
 		var val = ReactDOM.findDOMNode(this.refs.msg).value;
+		var date = new Date();
+		var nowTime = date.getHours()+':'+date.getMinutes();
 		var newMsg = {
-			time:'8:00',
+			time:nowTime,
 			myself:true,
 			headimg:'dist/img/h1.png',
 			text: val
 		}
+		if(val == '') return;
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );
 	},

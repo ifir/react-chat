@@ -4,7 +4,7 @@ module.exports = React.createClass({
 	render:function(){
 		var myself = this.props.myself ? 'msg-info me' : 'msg-info';
 		return (
-			<li key={this.props.keys}>
+			<li onClick={this.handleClick}>
 				<p className="time">
 					<span>{this.props.time}</span>
 				</p>
