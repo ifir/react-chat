@@ -7,7 +7,7 @@ module.exports = React.createClass({
 			<li className={this.props.active}>
 				<img src={this.props.headimg} alt="头像" />
 				<span>{this.props.name}</span>
-				<Msgnum shownum={this.props.shownum}/>
+				<Msgnum shownum={this.props.shownum} msgnum={this.props.msgnum}/>
 			</li>
 		)
 	}

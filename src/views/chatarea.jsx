@@ -9,13 +9,13 @@ module.exports = React.createClass({
 		var msgArray=[
 			{
 				time:'20:00',
-				myself:'msg-info',
+				myself:false,
 				headimg:'dist/img/h3.png',
 				text:'Hello，这是一个基于React + Webpack构建的简单chat示例，聊天记录保存在mongodb。简单演示了React的基础特性和webpack配置。'
 			},
 			{
 				time:'22:00',
-				myself:'msg-info me',
+				myself:true,
 				headimg:'dist/img/h1.png',
 				text:'Hello'
 			}
@@ -24,12 +24,18 @@ module.exports = React.createClass({
 	          msgArray:msgArray
 	    };
 	},
+	onNewMsg:function(newMsg){
+		var newMsgArray = this.state.msgArray.concat(newMsg);
+		this.setState({
+			msgArray : newMsgArray
+		})
+	},
 	render:function(){
 		return (
 			<div className="chatarea">
 				<Message msgArray={this.state.msgArray} />
 				<Tools />
-				<Text msgArray={this.state.msgArray} />
+				<Text onNewMsg={this.onNewMsg} />
 			</div>
 		)
 	}
