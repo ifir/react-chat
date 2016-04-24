@@ -391,7 +391,7 @@ li
 
         text-align: center;
 
-        background: #78dc51;
+        background: rgba(0, 0, 0, 0.35);
         img
         {
             line-height: 60px;
@@ -414,6 +414,6 @@ li
     }
     .offline
     {
-        background: #ccc;
+        background: rgba(0, 0, 0, 0.35);
     }
 }

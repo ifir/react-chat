@@ -3,6 +3,11 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+//加载路由
+var routes = require('./src/routers/router.js');
+//连接mongodb
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/chat');
 
 app.use(express.static(path.join(__dirname, '.')));
 
@@ -10,6 +15,10 @@ app.use(express.static(path.join(__dirname, '.')));
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
+//使用路由
+app.use('/', routes);
+// app.use('/login', routes);
+// app.use('/register', routes);
 //socket
 var msgList = [{
 				time:'20:00',
