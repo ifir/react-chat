@@ -3,26 +3,20 @@ var React = require('react');
 var Message = require('../components/message.jsx');
 var Tools = require('../components/tools.jsx');
 var Text = require('../components/text.jsx');
+var socket = require('socket.io-client')('http://localhost:3000');
 
 module.exports = React.createClass({
 	getInitialState:function() {
-		var msgArray=[
-			{
-				time:'20:00',
-				myself:false,
-				headimg:'dist/img/h3.png',
-				text:'Hello，这是一个基于React + Webpack构建的简单chat示例，聊天记录保存在mongodb。简单演示了React的基础特性和webpack配置。'
-			},
-			{
-				time:'22:00',
-				myself:true,
-				headimg:'dist/img/h1.png',
-				text:'Hello'
-			}
-		]
+		var msgArray=[];
 	    return {
 	          msgArray:msgArray
 	    };
+	},
+	componentDidMount: function() {
+		var that = this;
+		socket.on('historyMsg', function (data) {
+			that.setState({ msgArray: data });
+		})
 	},
 	onNewMsg:function(newMsg){
 		var newMsgArray = this.state.msgArray.concat(newMsg);

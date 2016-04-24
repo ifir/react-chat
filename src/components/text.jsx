@@ -1,5 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var socket = require('socket.io-client')('http://localhost:3000');
+
 module.exports = React.createClass({
 	handleSubmit:function(){
 		var val = ReactDOM.findDOMNode(this.refs.msg).value;
@@ -12,6 +14,7 @@ module.exports = React.createClass({
 			text: val
 		}
 		if(val == '') return;
+		socket.emit('msg',newMsg)
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );
 	},
