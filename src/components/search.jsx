@@ -14,7 +14,7 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<div className="headpic">
-					<img src="../dist/img/h1.png" alt="头像" />
+					<img src="./img/h1.png" alt="头像" />
 					<span>FIR{this.state.message}</span>
 				</div>
 				<div className="search">

@@ -6,12 +6,14 @@ var changed = require('gulp-changed');//过滤变动的文件
 var plumber = require('gulp-plumber');//捕获处理任务中的错误
 var sass = require('gulp-sass');//编译sass
 var imagemin = require('gulp-imagemin');//压缩img
+var htmlmin = require('gulp-htmlmin');//压缩html
 
 var config = require('./webpack.config.js');
 var reactPath = 'src/**/*.jsx';
 var imgPath = 'src/assets/img/*.*';
 var sassPath = 'src/assets/scss/*.scss';
 var fontPath = 'src/assets/fonts/*.*';
+var htmlPath = 'src/*.html'
 //webpack
 gulp.task('webpack', function(){
 	return gulp.src(reactPath)
@@ -25,7 +27,7 @@ gulp.task('supervisor', function() {
 	supervisor( "app.js", {
         watch: [ "src" ],
         ignore: [ "node_modules" ],
-        extensions: [ "jsx scss" ],
+        extensions: [ "jsx js scss" ],
         exec: "node"
     } );
 });
@@ -50,6 +52,12 @@ gulp.task('fonts', function(){
 	.pipe(changed(fontPath))
 	.pipe(gulp.dest('./dist/fonts'))
 })
+//html
+gulp.task('html', function(){
+	return gulp.src(htmlPath)
+	.pipe(changed(htmlPath))
+	.pipe(gulp.dest('./dist'))
+})
 //监视文件变化
 gulp.task('watch',function (){
 	gulp.watch(reactPath,['webpack']);
@@ -60,7 +68,7 @@ gulp.task('watch',function (){
 //默认gulp task
 gulp.task('default', function(callback){
 	 runSequence(
-	 	['webpack', 'sass', 'images', 'fonts', 'watch'],
+	 	['webpack', 'sass', 'images', 'html', 'fonts', 'watch'],
 	 	'supervisor',
 	 	callback
 	 )

@@ -7,14 +7,14 @@ module.exports = React.createClass({
 	getInitialState() {
 	    var userList = [
 	    	{
-	    		headimg:'dist/img/h2.png',
+	    		headimg:'./img/h2.png',
 	    		name:'React',
 	    		shownum:true,
 	    		msgnum:2,
 	    		active:'active'
 	    	},
 	    	{
-	    		headimg:'dist/img/h3.png',
+	    		headimg:'./img/h3.png',
 	    		name:'Webpack',
 	    		shownum:false,
 	    		msgnum:0,

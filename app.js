@@ -4,34 +4,49 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 //加载路由
-var routes = require('./src/routers/router.js');
+// var routes = require('./src/routers/router.js');
 //连接mongodb
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/chat');
 
-app.use(express.static(path.join(__dirname, '.')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
-
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+var Message = require('./src/data/model/msgModel.js');
+var msgList = null;
+app.get('/', function(req, res){
+  console.log('chat')
+  res.sendfile(__dirname + '/dist/chat.html');
+  // var msg = {
+  //       headimg:'./img/h3.png',
+  //       time:'20:00',
+  //       text:'Hello，这是一个基于React + Webpack构建的简单chat示例，聊天记录保存在mongodb。简单演示了React的基础特性和webpack配置。',
+  //       myself:false
+  //     };
+  // Message.create(msg,function(err,data){
+  //   if(err){
+  //         console.log('信息写入失败，请刷新浏览器='+err);
+  //   }else{
+  //     console.log('插入成功='+data)
+  //   }
+  // })
+  Message.find({},function(err, data){
+    if(err){
+      console.log(err)
+      return;
+    }
+    if(data){
+      msgList = data;
+      console.log(msgList)
+    }
+  })
 });
-//使用路由
-app.use('/', routes);
-// app.use('/login', routes);
-// app.use('/register', routes);
+app.get('/login', function (req, res) {
+  console.log('login')
+  res.sendfile(__dirname + '/dist/login.html');
+});
+
+
 //socket
-var msgList = [{
-				time:'20:00',
-				myself:false,
-				headimg:'dist/img/h3.png',
-				text:'Hello，这是一个基于React + Webpack构建的简单chat示例，聊天记录保存在mongodb。简单演示了React的基础特性和webpack配置。'
-			},
-			{
-				time:'22:00',
-				myself:true,
-				headimg:'dist/img/h1.png',
-				text:'Hello'
-			}];
 io.on('connection', function (socket) {
   console.log('一个用户连接')
   //用户下线

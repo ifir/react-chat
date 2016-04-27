@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
 var msgSchema = new mongoose.Schema({
-	name : { type : String }, //属性name,类型为String
+	//name : { type : String }, //属性name,类型为String
     headimg : { type : String },
-    time : { type:Date, default:Date.now },
+    time : { type : String },
     text : {type : String},
     myself:{type : Boolean}
 })
 
-module.exports = msgSchema;
+module.exports = mongoose.model('message', msgSchema);

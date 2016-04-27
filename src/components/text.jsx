@@ -10,7 +10,7 @@ module.exports = React.createClass({
 		var newMsg = {
 			time:nowTime,
 			myself:true,
-			headimg:'dist/img/h1.png',
+			headimg:'./img/h1.png',
 			text: val
 		}
 		if(val == '') return;
