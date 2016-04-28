@@ -3,6 +3,11 @@ var ReactDOM = require('react-dom');
 var socket = require('socket.io-client')('http://localhost:3000');
 
 module.exports = React.createClass({
+	getInitialState:function() {
+	return {
+		  headimg:''
+		}
+	},
 	handleSubmit:function(){
 		var val = ReactDOM.findDOMNode(this.refs.msg).value;
 		var date = new Date();
@@ -10,13 +15,22 @@ module.exports = React.createClass({
 		var newMsg = {
 			time:nowTime,
 			myself:true,
-			headimg:'./img/h1.png',
-			text: val
+			headimg:this.state.headimg,
+			text: val,
+			img:''
 		}
 		if(val == '') return;
-		socket.emit('msg',newMsg)
+		socket.emit('toAll', newMsg)
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );
+	},
+	componentDidMount:function() {
+		var that = this;
+		socket.on('loginInfo', function(msg){
+			that.setState({
+				headimg:msg[1]
+			})
+		})
 	},
 	render: function(){
 		return (

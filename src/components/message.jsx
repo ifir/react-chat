@@ -12,6 +12,7 @@ module.exports = React.createClass({
 					text={data.text}
 					headimg={data.headimg}
 					myself={data.myself}
+					img={data.img}
 				/>
 			)
 		})

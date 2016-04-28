@@ -5,12 +5,15 @@ var Chat = require('./chat.jsx');
 var Login = require('./login.jsx');
 var Register = require('./register.jsx');
 var Remind = require('../components/remind.jsx');
-
+var socket = require('socket.io-client')('http://localhost:3000');
 
 module.exports = React.createClass({
 	getInitialState:function() {
 	return {
-		  route: window.location.hash.substr(1)
+		  route: window.location.hash.substr(1),
+		  name: '',
+		  headimg:'',
+		  show: false
 		}
 	},
 	componentDidMount:function() {
@@ -20,6 +23,19 @@ module.exports = React.createClass({
 		    route: window.location.hash.substr(1)
 		  })
 		})
+		socket.on('loginInfo', function(msg){
+			that.setState({
+				name:msg[0],
+				headimg:msg[1],
+				show:true
+			})
+			setTimeout(function(){
+				that.setState({	
+					show:false
+				})
+			},5000)
+		})
+		
 	},
 	render:function(){
 		var  Child = null;
@@ -32,7 +48,7 @@ module.exports = React.createClass({
 		return (
 			<div>
 				<Child />
-				<Remind />
+				<Remind show={this.state.show} name={this.state.name} headimg={this.state.headimg}/>
 			</div>
 		)
 	}

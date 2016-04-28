@@ -1,6 +1,6 @@
 var React = require('react');
 var User = require('./user.jsx');
-
+var socket = require('socket.io-client')('http://localhost:3000');
 module.exports = React.createClass({
 	getInitialState:function() {
 	    return {
@@ -21,8 +21,6 @@ module.exports = React.createClass({
 					key={index}
 					headimg = {data.headimg}
 					name = {data.name}
-					shownum = {data.shownum}
-					msgnum = {data.msgnum}
 					active={cn}
 					handleClick={this.handleClick.bind(this,index)}
 				/>
