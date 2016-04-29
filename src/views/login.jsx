@@ -8,13 +8,24 @@ module.exports = React.createClass({
 		var that = this;
 		var dataObj = {
 			name: ReactDOM.findDOMNode(that.refs.name).value,
-		    password: ReactDOM.findDOMNode(that.refs.pwd).value,
-		    headimg:'img/h'+Math.ceil(Math.random()*10)+'.png'
+		    password: ReactDOM.findDOMNode(that.refs.pwd).value
 		};
 		if(dataObj.name == '' || dataObj.password == '') return;
-		console.log(dataObj)
-		socket.emit('login',dataObj);
-		location.hash = '/chat';
+		reqwest({
+		    url: '/login',
+		    method: 'post',
+		    type: 'json',
+		    data: dataObj,
+		    success: function (data) {
+		      if(data.status){
+		      	dataObj.headimg = data.user.headimg;
+		      	socket.emit('login',dataObj);
+				location.hash = '/chat';
+		      }else{
+		      	alert(data.msgerr)
+		      }
+		    }
+		})
 	},
 	render:function(){
 		return (

@@ -33,7 +33,7 @@ module.exports = React.createClass({
 					text: '',
 					img:e.target.result
 				}
-	  			socket.emit('sendImageToALL',newMsg);
+	  			socket.emit('sendimg',newMsg);
 	  			that.props.onNewMsg( newMsg );
 	  			console.log(msgObj.img)
 	  		};

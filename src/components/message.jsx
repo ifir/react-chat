@@ -3,6 +3,7 @@ var Msglist = require('./msg_list.jsx');
 
 module.exports = React.createClass({
 	render: function(){
+		var that = this;
 		var msgArrays = this.props.msgArray;
 		var msglists = msgArrays.map(function(data, index){
 			return (
@@ -10,9 +11,10 @@ module.exports = React.createClass({
 					key={index}
 					time={data.time}
 					text={data.text}
-					headimg={data.headimg}
-					myself={data.myself}
+					himg={data.headimg}
+					name={data.user}
 					img={data.img}
+					myself={data.myself}
 				/>
 			)
 		})

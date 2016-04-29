@@ -10,7 +10,7 @@ module.exports = React.createClass({
 					<span>{this.props.time}</span>
 				</p>
 				<div className={myself}>
-					<img src={this.props.headimg} alt="头像" />
+					<img src={this.props.himg} alt="头像" />
 					<div className="msg-text">
 						{this.props.text}
 						<img style={{display:display}} src={this.props.img} alt="" />

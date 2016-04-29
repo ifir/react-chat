@@ -1,10 +1,30 @@
 var React = require('react');
 var reqwest = require('reqwest');
 var ReactDOM = require('react-dom');
+var socket = require('socket.io-client')('http://localhost:3000');
 module.exports = React.createClass({
 	handleregister:function(){
 		var that = this;
-		
+		var dataObj = {
+			name: ReactDOM.findDOMNode(that.refs.name).value,
+		    password: ReactDOM.findDOMNode(that.refs.pwd).value
+		};
+		if(dataObj.name == '' || dataObj.password == '') return;
+		reqwest({
+		    url: '/register',
+		    method: 'post',
+		    type: 'json',
+		    data: dataObj,
+		    success: function (data) {
+		      if(data.status){
+		      	dataObj.headimg = data.user.headimg;
+		      	socket.emit('login',dataObj);
+				location.hash = '/chat';
+		      }else{
+		      	alert(data.msgerr)
+		      }
+		    }
+		})
 	},
 	render:function(){
 		return (

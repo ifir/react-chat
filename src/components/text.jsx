@@ -1,36 +1,26 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var reqwest = require('reqwest');
 var socket = require('socket.io-client')('http://localhost:3000');
 
 module.exports = React.createClass({
-	getInitialState:function() {
-	return {
-		  headimg:''
-		}
-	},
 	handleSubmit:function(){
 		var val = ReactDOM.findDOMNode(this.refs.msg).value;
 		var date = new Date();
 		var nowTime = date.getHours()+':'+date.getMinutes();
 		var newMsg = {
+			user:this.props.user,
 			time:nowTime,
 			myself:true,
-			headimg:this.state.headimg,
+			headimg:this.props.headimg,
 			text: val,
 			img:''
 		}
 		if(val == '') return;
-		socket.emit('toAll', newMsg)
+		console.log(newMsg.user)
+		socket.emit('sendmsg', newMsg)
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );
-	},
-	componentDidMount:function() {
-		var that = this;
-		socket.on('loginInfo', function(msg){
-			that.setState({
-				headimg:msg[1]
-			})
-		})
 	},
 	render: function(){
 		return (
