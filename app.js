@@ -78,7 +78,7 @@ app.get('/chat', function(req, res){
 })
 var userList = [], msgList=[];
 //socket
-io.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
   console.log('一个用户连接')
   //用户下线
   socket.on('disconnect', function () {
@@ -103,12 +103,13 @@ io.on('connection', function (socket) {
   socket.on('sendmsg',function(msgObj){
     console.log(msgObj)
     msgList.push(msgObj);
-    socket.broadcast.emit('allmsg',msgList);
+    io.emit('allmsg',msgList);
   });
   socket.on('sendimg',function(msgObj){
     msgList.push(msgObj);
-    socket.broadcast.emit('allmsg',msgList);
+    io.emit('allmsg',msgList);
   });
+  io.emit('allmsg',msgList)
 });
 
 

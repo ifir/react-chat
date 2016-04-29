@@ -9,7 +9,6 @@ module.exports = React.createClass({
 		var date = new Date();
 		var nowTime = date.getHours()+':'+date.getMinutes();
 		var newMsg = {
-			user:this.props.user,
 			time:nowTime,
 			myself:true,
 			headimg:this.props.headimg,
@@ -17,7 +16,7 @@ module.exports = React.createClass({
 			img:''
 		}
 		if(val == '') return;
-		console.log(newMsg.user)
+		console.log('newMsg.user=='+newMsg.user)
 		socket.emit('sendmsg', newMsg)
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );

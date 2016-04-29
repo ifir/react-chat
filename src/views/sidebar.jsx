@@ -6,24 +6,11 @@ var List = require('../components/list.jsx');
 
 
 module.exports = React.createClass({
-	getInitialState() {
-	    return {
-	    	userList : []
-	    }
-	},
-	componentDidMount:function() {
-		var that = this;
-	    socket.on('userList', function(user){
-	   		that.setState({
-	   			userList: user
-	   		})
-	   	})
-	},
 	render:function(){
 		return (
 			<div className="sidebar">
 				<Search />
-				<List userList={this.state.userList} />
+				<List userList={this.props.userList} />
 			</div>
 		)
 	}

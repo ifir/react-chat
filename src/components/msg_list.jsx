@@ -2,7 +2,8 @@ var React = require('react');
 
 module.exports = React.createClass({
 	render:function(){
-		var myself = this.props.myself ? 'msg-info me' : 'msg-info';
+
+		var myself = this.props.myself  ? 'msg-info me' : 'msg-info';
 		var display = this.props.img = '' ? 'none' : 'block';
 		return (
 			<li onClick={this.handleClick}>

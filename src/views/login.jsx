@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var reqwest = require('reqwest');
 var socket = require('socket.io-client')('http://localhost:3000');
+//require('../../node_modules/socket.io/node_modules/socket.io-client/socket.io.js')
 
 module.exports = React.createClass({
 	handlelogin:function(){

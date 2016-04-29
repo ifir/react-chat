@@ -6,13 +6,13 @@ module.exports = React.createClass({
 		var that = this;
 		var msgArrays = this.props.msgArray;
 		var msglists = msgArrays.map(function(data, index){
+			console.log('data.user='+data.user)
 			return (
 				<Msglist
 					key={index}
 					time={data.time}
 					text={data.text}
 					himg={data.headimg}
-					name={data.user}
 					img={data.img}
 					myself={data.myself}
 				/>

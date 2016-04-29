@@ -8,10 +8,12 @@ module.exports = React.createClass({
 				<div className="headpic">
 					<span>在线成员列表</span>
 				</div>
-				<div className="search">
-					<input className="search-input" type="text" placeholder="search user..."/>
-					<i className="icon icon-search"></i>
-				</div>
+				{
+					//<div className="search">
+					//<input className="search-input" type="text" placeholder="search user..."/>
+					//<i className="icon icon-search"></i>
+					//</div>
+				}
 			</div>
 		)
 	}
