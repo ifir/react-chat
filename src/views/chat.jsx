@@ -1,5 +1,5 @@
 var React = require('react');
-var reqwest = require('reqwest');
+var $ = require('jquery');
 var socket = require('socket.io-client')('http://localhost:3000');
 //视图
 var Sidebar = require('./sidebar.jsx');
@@ -16,28 +16,27 @@ module.exports = React.createClass({
 	    }
 	},
 	onNewMsg:function(newMsg){
-		console.log('newMsg=='+newMsg)
-		if(newMsg.user == this.state.user)
 		var newMsgArray = this.state.msgArray.concat(newMsg);
-		console.log('newMsgArray='+newMsgArray)
-
 		this.setState({
 			msgArray : newMsgArray
 		})
 	},
 	componentDidMount:function() {
 	    var that = this;
-	    reqwest('/chat', function (data) {
-		  if(data.user.headimg != ''){
-		  	console.log(data.user.name)
-		  	that.setState({
-				user:data.user.name,
-				headimg:data.user.headimg
-			})
-		  }
-		})
+		$.get("/chat",function(data){
+			if(data.user.headimg && data.user.name){
+				that.setState({
+					user:data.user.name,
+					headimg:data.user.headimg
+				})
+			}
+		});
+		setTimeout(function(){
+			if(that.state.user == ''){
+				location.hash = '/';
+			}
+		},200)
 		socket.on('allmsg', function(data){
-
 			that.setState({
 				msgArray: data
 			})

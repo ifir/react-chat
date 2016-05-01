@@ -6,7 +6,6 @@ module.exports = React.createClass({
 		var that = this;
 		var msgArrays = this.props.msgArray;
 		var msglists = msgArrays.map(function(data, index){
-			console.log('data.user='+data.user)
 			return (
 				<Msglist
 					key={index}
@@ -19,7 +18,7 @@ module.exports = React.createClass({
 			)
 		})
 		return (
-			<div className="show-message">
+			<div className="show-message fontsize1 font-color1">
 					<ul>
 						{msglists}
 					</ul>

@@ -6,7 +6,7 @@ module.exports = {
 	devtool: '#source-map',
 	entry: {
 		main : './src/main.jsx',
-		commons : ['react', 'react-dom', 'socket.io-client', 'reqwest']
+		commons : ['react', 'react-dom', 'socket.io-client', 'jquery']
 	},
 	output: {
 	    path: path.resolve(__dirname, './dist'),

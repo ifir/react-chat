@@ -12,3 +12,10 @@
        -moz-box-shadow: $value;
             box-shadow: $value;
 }
+@mixin text-shadow($value...)
+{
+    -webkit-text-shadow: $value;
+       -moz-text-shadow: $value;
+         -o-text-shadow: $value;
+            text-shadow: $value;
+}
