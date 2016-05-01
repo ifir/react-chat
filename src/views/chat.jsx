@@ -7,7 +7,7 @@ var Chatarea = require('./chatarea.jsx');
 
 
 module.exports = React.createClass({
-	getInitialState() {
+	getInitialState:function() {
 	    return {
 	    	userList : [],
 	    	msgArray:[],
