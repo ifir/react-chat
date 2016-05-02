@@ -15,7 +15,7 @@ module.exports = React.createClass({
 			text: val,
 			img:''
 		}
-		if(val == '') return;
+		if(val.replace(/[\r\n]/g,"") == '') return;
 		socket.emit('sendmsg', newMsg)
 		ReactDOM.findDOMNode(this.refs.msg).value = '';
 		this.props.onNewMsg( newMsg );
@@ -28,11 +28,12 @@ module.exports = React.createClass({
 				var newMsg = {
 					time:nowTime,
 					myself:true,
+					user:this.props.user,
 					headimg:this.props.headimg,
 					text: val,
 					img:''
 				}
-				if(val == '') return;
+				if(val.replace(/[\r\n]/g,"") == '' ) return;
 				socket.emit('sendmsg', newMsg)
 				ReactDOM.findDOMNode(this.refs.msg).value = '';
 				this.props.onNewMsg( newMsg );

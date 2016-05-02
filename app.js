@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var crypto = require( 'crypto' );//引入node中crypto加密模块
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
@@ -33,7 +34,7 @@ app.post('/register', function (req, res) {
   console.log('register')
   var registerData = {
     name: req.body.name,
-    password: req.body.password,
+    password: md5(req.body.password),
     headimg:'img/h'+Math.ceil(Math.random()*10)+'.png'
   };
   User.create(registerData, function(err, data){
@@ -57,7 +58,7 @@ app.post('/login', function(req, res){
     if(err){
       console.log(err);
     }else if(data){
-      if(data.password == req.body.password){
+      if(data.password == md5(req.body.password)){
         obj.status = true;
         obj.user = data;
         res.send(obj);
@@ -109,8 +110,16 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('allmsg',msgList);
   });
 });
-
-
+//密码加密
+function md5(data) {
+     //crypto.createHash(algorithm)创建并返回一个哈希对象,algorithm有 'sha1'、'md5'、'sha256'、'sha512' 等等
+     var md5 = crypto.createHash('md5');
+     //hash.update(data, [input_encoding])更新哈希对象, 可以通过input_encoding指定编码为'utf8'、'ascii'或者 'binary'。如果没有指定编码，将作为二进制数据（buffer）处理。
+     //hash.digest([encoding])计算传入的所有数据的摘要值, encoding可以是'hex'、'binary'或者'base64'，如果没有指定，会返回一个buffer对象。
+     var newPsd = md5.update(data).digest('hex');
+    //return crypto.createHash('md5').update(data).digest('hex').toLowerCase();  
+    return newPsd;
+}
 
 
 server.listen(3000, function () {
