@@ -8,6 +8,10 @@ var sass = require('gulp-sass');//编译sass
 var imagemin = require('gulp-imagemin');//压缩img
 var htmlmin = require('gulp-htmlmin');//压缩html
 var cssmin = require('gulp-cssmin');//压缩css
+//var rev = require('gulp-rev');//更改版本号
+//var revCollector = require('gulp-rev-collector');//更改html文件路径
+//var clean = require('gulp-clean');
+//var del = require('del');
 
 var config_dev = require('./webpack.config.js');
 var config_pro = require('./webpack.config.pro.js');
@@ -16,6 +20,8 @@ var imgPath = 'src/assets/img/*.*';
 var sassPath = 'src/assets/scss/*.scss';
 var fontPath = 'src/assets/fonts/*.*';
 var htmlPath = 'src/*.html'
+
+
 
 //webpack
 gulp.task('webpack', function(){

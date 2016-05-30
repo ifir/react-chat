@@ -79,7 +79,7 @@ app.get('/chat', function(req, res){
 var userList = [], msgList=[];
 //socket
 io.on('connection', function (socket) {
-  console.log('一个用户连接')
+  //console.log('一个用户连接')
   //用户下线
   socket.on('disconnect', function () {
     var user = _.findWhere(userList,{id:socket.id});

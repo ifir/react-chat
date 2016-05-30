@@ -391,6 +391,9 @@ a
             height: 500px;
             .show-message
             {
+                ul{
+                    padding-bottom:20px!important;
+                }
                 overflow-y: auto;
 
                 width: 500px;
@@ -449,7 +452,7 @@ a
                         background-color: #fafafa;
                         img
                         {
-                            max-width: 400px;
+                            max-width: 367px;
                             margin: 10px auto;
                         }
                         &:before

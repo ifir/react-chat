@@ -30,7 +30,7 @@ module.exports = React.createClass({
 	  			var newMsg = {
 					time:nowTime,
 					myself:true,
-					headimg:'img/h1.png',
+					headimg:that.props.headimg,
 					text: '',
 					img:e.target.result
 				}

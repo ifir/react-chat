@@ -11,7 +11,7 @@ module.exports = React.createClass({
 		return (
 			<div className="chatarea">
 				<Message msgArray={this.props.msgArray} user={this.props.user}/>
-				<Tools onNewMsg={this.props.onNewMsg}/>
+				<Tools onNewMsg={this.props.onNewMsg} headimg={this.props.headimg}/>
 				<Text onNewMsg={this.props.onNewMsg} user={this.props.user} headimg={this.props.headimg}/>
 			</div>
 		)
